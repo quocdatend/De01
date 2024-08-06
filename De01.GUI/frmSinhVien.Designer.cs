@@ -162,21 +162,27 @@
             // 
             // btKhong
             // 
+            btKhong.BackColor = SystemColors.ActiveBorder;
+            btKhong.Enabled = false;
+            btKhong.ForeColor = SystemColors.ControlDark;
             btKhong.Location = new Point(316, 4);
             btKhong.Name = "btKhong";
             btKhong.Size = new Size(70, 28);
             btKhong.TabIndex = 4;
             btKhong.Text = "K.Lưu";
-            btKhong.UseVisualStyleBackColor = true;
+            btKhong.UseVisualStyleBackColor = false;
             // 
             // btLuu
             // 
+            btLuu.BackColor = SystemColors.ActiveBorder;
+            btLuu.Enabled = false;
+            btLuu.ForeColor = SystemColors.ControlDark;
             btLuu.Location = new Point(236, 4);
             btLuu.Name = "btLuu";
             btLuu.Size = new Size(74, 29);
             btLuu.TabIndex = 3;
             btLuu.Text = "Lưu";
-            btLuu.UseVisualStyleBackColor = true;
+            btLuu.UseVisualStyleBackColor = false;
             // 
             // btSua
             // 
@@ -186,6 +192,7 @@
             btSua.TabIndex = 2;
             btSua.Text = "Sửa";
             btSua.UseVisualStyleBackColor = true;
+            btSua.Click += btSua_Click;
             // 
             // btXoa
             // 
@@ -226,6 +233,7 @@
             // lvSinhVien
             // 
             lvSinhVien.Columns.AddRange(new ColumnHeader[] { col_mssv, col_fullname, col_ngaysinh, col_lop });
+            lvSinhVien.FullRowSelect = true;
             lvSinhVien.Location = new Point(82, 281);
             lvSinhVien.Name = "lvSinhVien";
             lvSinhVien.Size = new Size(687, 216);

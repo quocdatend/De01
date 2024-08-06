@@ -120,7 +120,7 @@ namespace De01.GUI
             DialogResult result = MessageBox.Show("Bạn Muốn Xoa không!", "Thông Báo", MessageBoxButtons.YesNo);
             if (result == DialogResult.Yes)
             {
-                if(index!=-1)
+                if (index != -1)
                 {
                     lvSinhVien.Items.RemoveAt(index);
                     sinhVienService.delete(masv);
@@ -128,6 +128,39 @@ namespace De01.GUI
             }
             index = -1;
             masv = null;
+        }
+
+        private void btSua_Click(object sender, EventArgs e)
+        {
+            Lop? lop = lopService.findByName(cboLop.Text).FirstOrDefault();
+            SinhVien sinhVien = new SinhVien()
+            {
+                MaSv = txtMaSV.Text,
+                HotenSv = txtHotenSV.Text,
+                NgaySinh = dtNgaySinh.Text,
+                MaLop = lop.MaLop
+            };
+            sinhVienService.edit(sinhVien);
+            lvSinhVien.Items.Clear();
+            List<SinhVien> sinhViens = sinhVienService.getAll();
+            List<Lop> lops = lopService.getAll();
+            ListViewItem listView;
+            foreach (SinhVien sinhVien1 in sinhViens)
+            {
+
+                listView = new ListViewItem(sinhVien1.MaSv);
+                listView.SubItems.Add(sinhVien1.HotenSv);
+                listView.SubItems.Add(sinhVien1.NgaySinh.ToString());
+                foreach (Lop lop1 in lops)
+                {
+                    if (lop1.MaLop.Equals(sinhVien1.MaLop))
+                    {
+                        listView.SubItems.Add(lop1.TenLop);
+                        break;
+                    }
+                }
+                lvSinhVien.Items.Add(listView);
+            }
         }
     }
 }

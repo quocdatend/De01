@@ -1,4 +1,5 @@
 ﻿using De01.DAL.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -32,6 +33,12 @@ namespace De01.BUS.Services
         public List<SinhVien> getById(string id)
         {
             return context.SinhViens.Where(x=>x.MaSv.Equals(id)).ToList();
+        }
+        // edit 
+        public void edit(SinhVien sinhVien)
+        {
+            context.SinhViens.Update(sinhVien);
+            context.SaveChanges();
         }
     }
 }
